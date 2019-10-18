@@ -1,0 +1,206 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{epstopdf}
+\usepackage{getfiledate}
+\usepackage[utf8]{inputenc}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+
+\newenvironment{explanation}{%
+   \setlength{\parindent}{0pt}
+   \itshape
+   \color{blue}
+}{}
+
+\newcommand{\projectname}{Dahoam}
+\newcommand{\productname}{Dahoam}
+\newcommand{\projectleader}{I. Gattringer}
+\newcommand{\responsible}{B. Schröder}
+\newcommand{\lastChanged}{\getfiledate[putprefix=false, datecolor=black]{main.tex}}
+\newcommand{\documentstatus}{In process}
+%\newcommand{\documentstatus}{Submitted}
+%\newcommand{\documentstatus}{Released}
+\newcommand{\version}{V. 1.0}
+
+
+
+
+\begin{document}
+\begin{titlepage}
+\begin{flushright}
+\includegraphics[scale=.5]{htlleondinglogo.png}\\
+\begin{figure}[h]
+\includegraphics[scale=.2]{dahoamLogo.png}
+\centering
+\end{figure}
+\end{flushright}
+
+\vspace{1em}
+
+\begin{center}
+{\Huge Project Proposal} \\[3em]
+{\LARGE \productname} \\[3em]
+\end{center}
+
+\begin{flushleft}
+\begin{tabular}{|l|l|}
+\hline
+Project Name & \projectname \\ \hline
+Project Leader & \projectleader \\ \hline
+Responsible  & \responsible \\ \hline 
+Last Changed & \lastChanged \\ \hline 
+Processing State & \documentstatus \\ \hline
+Version & \version \\ \hline
+Last Changed & \getfiledate[putprefix=false, notime, datecolor=black]{main.tex} \\ \hline
+\end{tabular}
+\end{flushleft}
+
+\end{titlepage}
+\section*{Further Product Information}
+\begin{tabular}{|l|l|}
+\hline
+\cellcolor[gray]{0.5}\textcolor{white}{Participating} & {Ivonne Gattringer, Alexander Kapsammer, Manuel Kommenda, Marcel Pölzl} &
+\cellcolor[gray]{0.5}\textcolor{white}{Creation} & {Initial Intern}
+\end{tabular}
+\pagebreak
+
+\tableofcontents
+\pagebreak
+
+\section{Introduction}
+\begin{explanation}
+Since Smart Homes are getting more popular in the last few years, a big new market has appeared. Today’s situation is that you still need a device that manages all the different gadgets and other appliances in houses. In most smart homes there is a little tablet which can be mounted on the wall in the entrance room. Which means you already waste an extra space. Dahoam should prevent that issue and combine a commercial mirror with a Smart home hub, despite that a mirror is way more flexible in where to install it.
+\end{explanation}
+\pagebreak
+
+\section{Initial Situation}
+\begin{explanation}
+Dahoam is a thesis from Jonas Fallman, Markus Premstaller and Felix Reichel which at-tended the HTL Leonding and passed the final exams in 2019.
+The mirror is capable of
+\begin{itemize}
+	\item detecting people via a built-in face recognition
+	\item understanding spoken commands
+	\item displaying weather, email, calendar
+	\item turning on/off lights
+\end{itemize}
+
+as well as a “Dahoam Connect App” to manage profiles of users.
+The mentioned points are working not consistently and need to be fixed/improved.
+
+\end{explanation}
+
+\pagebreak
+
+\section{General Conditions and Constraints}
+
+Our Know-how:
+\begin{itemize}
+	\item Java
+	\item Angular
+	\item C#
+	\item SQL
+	\item Typescript
+	\item C/C++
+	\item MQTT
+	\item Unity
+\end{itemize}
+\newline
+Constraints:
+\begin{itemize}
+	\item Limited Resources
+\end{itemize}
+
+\pagebreak
+
+\section{Project Objectives and System Concepts}
+
+\begin{itemize}
+    \item Setup and Build
+    \begin{itemize}
+        \item Enable full dockerized runtime environment
+        \begin{itemize}
+            \item No need to set up build system on raspberry pi used for demos
+            \item Abort when error occurs
+        \end{itemize}
+        \item Development Environment
+        \begin{itemize}
+            \item Improve logging
+            \begin{itemize}
+                \item Optimize loglevel settings and log outputs
+                \item Each component own logfile
+                \item Exception handling and error reporting 
+            \end{itemize}
+            \item Isolated testing of services with node red
+            \begin{itemize}
+                \item Speech
+                \item Intent
+                \item Masterservice + DB + GUI
+                \item DB + phpMyAdmin
+                \item Face
+                \item TTS
+            \end{itemize}
+            \item Building without sudo
+        \end{itemize}
+    \end{itemize}
+    
+\end{itemize}
+
+\pagebreak
+
+\section{Opportunities and Risks}
+\begin{explanation}
+The Subject Opportunities and Risks comprises data which are normally prepared in industrial business plans. Frequently, an anonymous market with potential acquirers, which could be interested in the new product or system idea, will be analyzed at first. Therefore, the contents of this subject is characterized by a certain uncertainty or fuzziness. The subjects examines the chances of achieving profit on the market with a specific product or system. In addition to the chances, the risks of failing on the market or sustaining losses with a product or system should be analyzed.
+\end{explanation}
+
+\begin{example}
+The project has the following opportunities:
+\begin{itemize}
+\item The doctor is able to increase his time with his patients.
+\item The time for bureaucratic work declines.
+\item The quality will increase
+\end{itemize}
+
+The following risk have to be taken into account.
+\begin{itemize}
+\item Data transfer of studentsÕ master data from legacy systems is problematic.
+\item There is no information about the legacy systems and their data structure.
+\item Further there is no information, whether the staff is capable and willing to supply the students master data (names, classes, ...).
+\end{itemize}
+
+\end{example}
+
+\pagebreak
+\section{Planning}
+\begin{explanation}
+The planning specifies the organizational and commercial project execution and system development aspects. The project organization, e.g., matrix organization and steering committees, and the responsibilities for the decision-making processes within project will be specified.
+The Project Leader will be appointed, his tasks will be defined. Available resources, funds and specialist personnel will be determined. Start and end date for the project will be specified. The planning can be based on the statements developed in the subject Project Objectives and System Concepts, which makes additional statements on feasibility, funding and schedules.
+
+The following parts must be included:
+\begin{itemize}
+\item List of major project milestones.
+\item Assign project lead and other outstanding roles to team members.
+\item Give a rough estimate how many resources you need (human resources, licenses, servers, etc.)
+\end{itemize}
+
+Answer the following questions when preparing this section:
+\begin{itemize}
+\item When will the project end?
+\item When will the project start?
+\item When will be a first prototype available?
+\item When does implementation work start?
+\item What are the big blocks of work to be done?
+\item Is this work doable in the given period of time?
+\item Do we need any other stuff to make our work (licenses, servers, É)?
+\end{itemize}
+\end{explanation}
+
+\end{document}  
