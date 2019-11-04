@@ -85,8 +85,9 @@ Since Smart Homes are getting more popular in the last few years, a big new mark
 \pagebreak
 
 \section{Initial Situation} 
-\begin{explanation} \color{black}
-Dahoam is a thesis from Jonas Fallman, Markus Premstaller and Felix Reichel which attended the HTL Leonding and passed the final exams in 2019.
+\begin{explanation} \color{black} \normalfont
+An initial prototype of Dahoam was built between 2018 and 2019. \\
+ 
 The mirror is capable of
 \begin{itemize}
 	\item detecting people via a built-in face recognition
@@ -95,8 +96,22 @@ The mirror is capable of
 	\item turning on/off lights
 \end{itemize}
 
-as well as a “Dahoam Connect App” to manage profiles of users.
-The mentioned points are working not consistently and need to be fixed/improved.
+
+as well as a “Dahoam Connect App” to manage profiles of users. 
+Each functionality runs in its own microservice. These services run in their own Docker-container and are handled though a master service. All services are started within a single build.\\ \\
+Current problems/bugs are
+\begin{itemize}
+    \item No aborting when building with errors
+    \item Building only with sudo
+    \item Face/Speak stops during runtime
+    \item When selecting weather intent in Dahoam-Connect, all other panels stop working
+    \item CRUD management of users not existing
+    \item Simple setup of new Raspberry Pi without any custom installations
+    \item Aborting user registration not possible
+    \item MQTT-Topics are static
+    \item Wheater location static
+    \item QR-Code scanning while in light environment
+\end{itemize}
 
 \end{explanation}
 
@@ -118,7 +133,8 @@ Our Know-how:
 \newline
 Constraints:
 \begin{itemize}
-	\item Limited Resources
+	\item Hardware given (Limitation in performance)
+	\item Speech and face recognition run locally (high performance impact)
 \end{itemize}
 
 \pagebreak
@@ -128,96 +144,46 @@ Constraints:
 \begin{itemize}
     \item Setup and Build
     \begin{itemize}
-        \item Enable full dockerized runtime environment
-        \begin{itemize}
-            \item No need to set up build system on raspberry pi used for demos
-            \item Abort when error occurs
-        \end{itemize}
-        \item Development Environment
-        \begin{itemize}
-            \item Improve logging
-            \begin{itemize}
-                \item Optimize loglevel settings and log outputs
-                \item Each component own logfile
-                \item Exception handling and error reporting 
-            \end{itemize}
-            \item Isolated testing of services with node red
-            \begin{itemize}
-                \item Speech
-                \item Intent
-                \item Masterservice + DB + GUI
-                \item DB + phpMyAdmin
-                \item Face
-                \item TTS
-            \end{itemize}
-            \item Building without sudo
-        \end{itemize}
+        \item \textbf{Enable full dockerized runtime environment} \\
+         To simplify the setup of a new Raspberry Pi the every microservice will run in its own docker container. This will also ease error handling
+        \item \textbf{Development Environment} \\
+        Each microservice will have its own logfile and throw specific exceptions, which will simplify searching for errors.
+        All services can be tested individually via Node-RED.
+        Building will be possible without sudo
     \end{itemize}
     \item Documentation
     \item Dahoam-Administration
     \begin{itemize}
-        \item Dahoam-Connect-App and web-frontend for browser-clients
-        \begin{itemize}
-            \item User List
-            \item Alternative to QR-Code
-            \item Admin account
-            \item Login via face recognition
-        \end{itemize}
-        \item User administration
-        \begin{itemize}
-            \item Full CRUD functionalities
-            \item Improve calendar and email configuration
-            \item Configure weather location
-            \item Login procedure
-            \item Encrypt user password before storing in DB
-        \end{itemize}
-        \item Smart home configuration
-        \begin{itemize}
-            \item Dynamic configuration of temperature and light
-            \item Improve School IOT integration
-        \end{itemize}
-        \item 24/7 demo mode
-        \begin{itemize}
-            \item Kiosk for autostart
-            \item Easter egg feature
-            \item Sleep mode
-            \begin{itemize}
-                \item Wake up with movement sensor or webcam
-                \item start/stop of single container
-            \end{itemize}
-            \item Hardware integration
-            \begin{itemize}
-                \item Speaker
-                \item Raspberry pi (protect against overheat)
-            \end{itemize}
-        \end{itemize}
-        \item Dahoam flows
-        \begin{itemize}
-            \item Improve session management
-            \begin{itemize}
-                \item Logout feature
-                \item Authenticate voice commands (restrict commands to logged in users)
-                \item Unique usernames
-            \end{itemize}
-            \item Face Recognition
-            \begin{itemize}
-                \item Multiple faces
-            \end{itemize}
-            \item Registration flow
-            \begin{itemize}
-                \item Live camera feedback during registration feature
-                \item Handling of registration aborted
-            \end{itemize}
-            \item Improve Speech recognition quality
-            \begin{itemize}
-                \item Find alternatives to sphinx
-                \item Testing full dictionary
-            \end{itemize}
-        \end{itemize}
-        \item Optional
-        \begin{itemize}
-            \item Customizable user dashboard
-        \end{itemize}
+        \item \textbf{Dahoam-Connect-App and web-frontend for browser-clients} \\
+        Find an alternative for QR-Code on user registration. \\
+        Add the possibilty to login via face recognition.
+        
+        \item \textbf{User administration} \\
+        An admin role will be added which can manage all users via CRUD functionalities. Further there will be a simplified usage of calendar, email and weather location configuration. Encrypting user passwords will add security in saving them in the database.
+        \item \textbf{Smart home configuration} \\
+        Change smart home configuration from static to dynamic values and add features for IOT integration.
+    \end{itemize}
+    \item Demo mode 
+    \begin{itemize}  \\
+    \item \textbf{24/7 runable}\\
+        Add kiosk startup system to automatically start the mirror without any additional IO-hardware. The dockerized services can be set to sleep mode to enhance running time of the mirror and reduce heat problems. An additional movement sensor will detect activities in front of the mirror and wake needed services up again.
+    \item \textbf{Easter egg}\\
+        Add easter egg feature for presentations.
+    \item \textbf{Hardware integration}\\
+        Integrate speakers into the mirror and add cooling to the Raspberry Pi. \\
+    \end{itemize}
+    \item Dahoam flows
+    \begin{itemize} \\
+        \item \textbf{Improve session management}\\
+        Only logged-in users can show emails and calendar. Each user must have an unique username and the possibility to log themselves out.
+        \item \textbf{Face recognition}\\
+        Solve the recognition problem when several registered users stand in front of the mirror.
+        \item \textbf{Registration flow}\\
+        While registration there is a live camera feedback to help the user placing his/her face in the right position. When the registration is aborted there has to be the possibility to register again after that.
+        \item \textbf{Improve speech recognition quality}\\
+        Find an alternative speech recognition to "sphinx".
+        \item \textbf{Optional}\\
+        Make the user dashboard customizable.
     \end{itemize}
 \end{itemize}
 \pagebreak
@@ -239,13 +205,7 @@ Used technology:
     \item phpMyAdmin
 \end{itemize}
 \newline
-Structure:
-\begin{itemize}
-    \item Microservice Architecture
-    \item Docker-Compose
-    \item Master Service
-    \item Combined startup
-\end{itemize}
+
 
 \pagebreak
 
