@@ -1,0 +1,3 @@
+Logout am Spiegel
+E-Mails werden angezeigt, man kann sie aber nciht öffnen
+Bei E-Mail: nur POP3
