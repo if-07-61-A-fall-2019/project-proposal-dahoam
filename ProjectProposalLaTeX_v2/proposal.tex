@@ -29,7 +29,7 @@
 \newcommand{\documentstatus}{In process}
 %\newcommand{\documentstatus}{Submitted}
 %\newcommand{\documentstatus}{Released}
-\newcommand{\version}{V1.0}
+\newcommand{\version}{V1.1}
 
 
 
@@ -80,7 +80,7 @@ Last Changed & \lastChanged & \hline
 
 \section{Introduction} 
 \begin{explanation} \color{black} \normalfont
-Since Smart Homes are getting more popular in the last few years, a big new market has appeared. Today’s situation is that devices which are managing all the different gadgets and other appliances in houses are needed. In most smart homes there is a small tablet which can be mounted on the wall in the entrance room. Which means an extra space is wasted. \textit{Dahoam} should prevent that issue and combine a commercial mirror with a Smart home hub, despite that a mirror is way more flexible in where to install it.
+Since Smart Homes are getting more popular in the last few years, a big new market has appeared. Today’s situation is that devices which are managing all the different gadgets and other appliances in houses are needed. In most smart homes there is a small tablet which can be mounted on a wall in the entrance room. Which means an extra space is wasted. \textit{Dahoam} should prevent the waste of extra space and combine a commercial mirror with a smart home hub, despite that a mirror is way more flexible in where to install it.
 \end{explanation}
 \pagebreak
 
@@ -97,20 +97,23 @@ The mirror is capable of
 \end{itemize}
 
 
-as well as a “Dahoam Connect App” to manage profiles of users. 
-Each functionality runs in its own microservice. These services run in their own Docker-container and are handled though a master service. All services are started within a single build.\\ \\
+as well as a “Dahoam-Connect-App” to manage profiles of users. 
+Each functionality runs in its own microservice. These services run in their own Docker-container and are handled through a master service. All services are started within a single build.\\ \\
 Current problems/bugs are
 \begin{itemize}
     \item No aborting when building with errors
     \item Building only with sudo
     \item Face/Speak stops during runtime
-    \item When selecting weather intent in Dahoam-Connect, all other panels stop working
+    \item When selecting weather intent in the Dahoam-Connect-App, all other panels stop working
     \item CRUD management of users not existing
-    \item Simple setup of new Raspberry Pi without any custom installations
+    \item Complex procedures to setup new Raspberry Pi
     \item Aborting user registration not possible
     \item MQTT-Topics are static
-    \item Wheater location static
+    \item Wheater location is static
     \item QR-Code scanning while in light environment
+    \item Logout on mirror client not possible
+    \item Displayed mails can't be opened
+    \item Emails only via POP3
 \end{itemize}
 
 \end{explanation}
@@ -119,7 +122,7 @@ Current problems/bugs are
 
 \section{General Conditions and Constraints}
 
-Our Know-how:
+Our know-how:
 \begin{itemize}
 	\item Java
 	\item Angular
@@ -130,10 +133,9 @@ Our Know-how:
 	\item MQTT
 	\item Unity
 \end{itemize}
-\newline
 Constraints:
 \begin{itemize}
-	\item Hardware given (Limitation in performance)
+	\item Hardware prespecified (limitation in performance)
 	\item Speech and face recognition run locally (high performance impact)
 \end{itemize}
 
@@ -145,19 +147,18 @@ Constraints:
     \item Setup and Build
     \begin{itemize}
         \item \textbf{Enable full dockerized runtime environment} \\
-         To simplify the setup of a new Raspberry Pi the every microservice will run in its own docker container. This will also ease error handling
-        \item \textbf{Development Environment} \\
+         To simplify the setup of a new Raspberry Pi, every microservice will run in its own docker-container. This will also ease error handling
+        \item \textbf{Development environment} \\
         Each microservice will have its own logfile and throw specific exceptions, which will simplify searching for errors.
         All services can be tested individually via Node-RED.
-        Building will be possible without sudo
+        Building will be possible without "sudo"
     \end{itemize}
     \item Documentation
     \item Dahoam-Administration
     \begin{itemize}
         \item \textbf{Dahoam-Connect-App and web-frontend for browser-clients} \\
         Find an alternative for QR-Code on user registration. \\
-        Add the possibilty to login via face recognition.
-        
+        Add the possibility to login via face recognition.
         \item \textbf{User administration} \\
         An admin role will be added which can manage all users via CRUD functionalities. Further there will be a simplified usage of calendar, email and weather location configuration. Encrypting user passwords will add security in saving them in the database.
         \item \textbf{Smart home configuration} \\
@@ -166,11 +167,11 @@ Constraints:
     \item Demo mode 
     \begin{itemize}  \\
     \item \textbf{24/7 runable}\\
-        Add kiosk startup system to automatically start the mirror without any additional IO-hardware. The dockerized services can be set to sleep mode to enhance running time of the mirror and reduce heat problems. An additional movement sensor will detect activities in front of the mirror and wake needed services up again.
+        Add kiosk startup system to automatically start the mirror without any additional IO-hardware. The dockerized services can be set to sleep mode to enhance runtime of the mirror and reduce heat problems. An extra movement sensor will detect activities in front of the mirror and wake needed services up again.
     \item \textbf{Easter egg}\\
-        Add easter egg feature for presentations.
+        Add "easter egg" feature for presentations.
     \item \textbf{Hardware integration}\\
-        Integrate speakers into the mirror and add cooling to the Raspberry Pi. \\
+        Integrate speakers into the mirror and add cooling to the Raspberry Pi.\\
     \end{itemize}
     \item Dahoam flows
     \begin{itemize} \\
@@ -204,30 +205,26 @@ Used technology:
     \item Node RED
     \item phpMyAdmin
 \end{itemize}
-\newline
 
 
 \pagebreak
 
 \section{Opportunities and Risks}
 Opportunities:
-\begin{itemize}
-    \item Improve the current Dahoam project
-    \item Improve time management
-    \item Creating a multifunctional smart home hub
-\end{itemize}
+Dahoam is one of the leading projects of HTL Leonding. The mirror is exposed on various events and is meant to raise the reputation of the school.
+It combines both of the main focuses of HTL Leonding, IOT and machine learning.
 \newline
 Risks:
 \begin{itemize}
-    \item Too expensive
-    \item No suitable hardware
+    \item Due to space problems, the mirror has limited cooling available for the Raspberry Pi, so a full usage of the resources is not possible for a longer time.
+    \item Compatibility issues when switching from Raspberry Pi 3 to Raspberry Pi 4.
 \end{itemize}
 
 \pagebreak
 \section{Planning}
 Start: 6. September 2019
 \newline
-End: 25. October 2019
+End: 11. November 2019
 
 \pagebreak
 \section{Milestones}
@@ -235,10 +232,10 @@ End: 25. October 2019
 \begin{tabular}{|l|l|}
 \hline
 \cellcolor[gray]{0.5}\textcolor{white}{Title} & \cellcolor[gray]{0.5}\textcolor{white}{Date} &
-{Enable full dockerized runtime environment} & {TADEOT Jan 2020} & \hline
+{Enable full dockerized runtime environment} & {15. Dec 2019} & \hline
 {Development environment} & {} & \hline
 { - Improve logging} & {TADEOT Jan 2020} & \hline
-{ - Isolated testing of services with node red} & {TADEOT Jan 2020} & \hline
+{ - Isolated testing of services with Node-RED} & {TADEOT Jan 2020} & \hline
 {Dahoam-Connect-App} & {} & \hline
 { - Alternative to QR-code} & {TADEOT Jan 2020} & \hline
 { - Admin account} & {TADEOT Jan 2020} & \hline
@@ -247,7 +244,7 @@ End: 25. October 2019
 { - Login procedure} & {TADEOT Jan 2020} & \hline
 {24/7 Demo mode} & {} & \hline
 { - Kiosk for autostart} & {TADEOT Jan 2020} & \hline
-{ - Easter Egg feature} & {TADEOT Jan 2020} & \hline
+{ - "Easter egg" feature} & {TADEOT Jan 2020} & \hline
 { - Sleep mode} & {TADEOT Jan 2020} & \hline
 { - Hardware integration} & {TADEOT Jan 2020} & \hline
 {Dahoam-Flows} & {} & \hline
