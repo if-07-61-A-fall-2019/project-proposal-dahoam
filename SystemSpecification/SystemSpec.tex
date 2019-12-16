@@ -19,11 +19,12 @@
    \setlength{\parindent}{0pt}
    \itshape
    \color{blue}
+   \normalfont
 }{}
 
 \newcommand{\projectname}{Template}
-\newcommand{\productname}{Name of the Project}
-\newcommand{\projectleader}{P. Bauer}
+\newcommand{\productname}{Dahoam}
+\newcommand{\projectleader}{I. Gattringer}
 \newcommand{\documentstatus}{In process}
 %\newcommand{\documentstatus}{Submitted}
 %\newcommand{\documentstatus}{Released}
@@ -64,146 +65,247 @@ November 03, 2019&P. Bauer&First version \\ \hline
 \tableofcontents
 \pagebreak
 
-\section{Initial Situation and Goal}
-\begin{explanation}
-This section describes the initial situation and the motivation to start this project. You describe the problem of the existing system or approach and make clear what led to the decision to carry out this project and point out the benefits of the new system.
-Furthermore, list all relevant project stake holders and draw a picture how your system will fit into the framework of existing systems and environments. Finally a first draft of general requirements like technical constraints or security constraints has to be given.
-\end{explanation}
+\section{Initial Situation and Goal}  
+An Initial prototype of Dahoam was built between 2018 and 2019. The reasons for carrying out the project was to enhance the mirror in all aspects. It is in interest of the headmaster and head of department of HTL Leonding to have a project like Dahoam which represents most of the technical focuses of the school. \newline
+Furthermore, Dahoam combines a smart home hub with a mirror, which can be found in most households already. \newline
+To ensure privacy and security, all services of Dahoam run locally, which means no camera and voice data will be sent to the cloud.
 
 \subsection{Initial Situation}
-\begin{explanation}
-In this subsection you describe the scope of application of your system. Describe the current state of how the current system works. Give current work flows and introduce and explain domain specific terms. Revisit the section “Initial Situation” from your project proposal and see what you would refine under your now improved understanding of the project
-\end{explanation}
+Since Smart Homes are getting more popular in the last few years, a big new market has appeared. Today’s situation is that devices which are managing all the different gadgets and other appliances in houses are needed. In most smart homes there is a small tablet which can be mounted on a wall in the entrance room. Which means an extra space is wasted. Dahoam should prevent the waste of extra space and combine a commercial mirror with a smart home hub, despite that a mirror is way more flexible in where to install it.
 
 \subsubsection{Application Domain}
-\begin{explanation}
-Describe the application domain of your system as well as the environment in which it is embedded. If there exists an environmental business process you should describe it here. Focus on the interrelationship of terms, business processes etc. (... not sure whether I understand what they really mean here...)
-
-Your goal in this section is to introduce the domain-specific terminology and the context in which your system lives. Introduce in a way such that an interested layman can follow your text, establish a clear structure of your text, use illustrations and don’t assume a detailed domain specific knowledge.
-
-Take care to clearly separate assumptions from given hard facts. This enables you to trace down your requirements in case of (customer) complaints in a later project stage.
-\end{explanation}
+Dahoam is embedded in a special mirror which is most likely placed in households. The mirror handles user interaction with three services, including \textit{"Text-To-Speech"}, \textit{"Speech Recognition"} and \textit{"Intent Parser"}. Besides it recognizes people in front of it via \textit{"Face Recognition"}.
 
 \subsubsection{Glossary}
-\begin{explanation}
-This subsection provides primarily the same information as the above but it adds value in that sense that the reader can look up explanations for subject specific terms. The focus is switched from emphasizing the interrelationship to a term-centric description.
-\end{explanation}
+
+\begin{flushleft}
+\begin{tabular}{|l|l|}
+\hline
+Text-To-Speech & Converts output to spoken words\\ \hline
+Speech Recognition & Converts spoken input to text\\ \hline
+Intent Parser & Parses input to executable commands\\ \hline
+Face Recognition & Compares faces in front of the camera with saved faces\\ \hline
+\end{tabular}
+\end{flushleft}
 
 \subsubsection{Model of the Application Domain}
 \begin{explanation}
-This subsection completes the domain specific explanations. Explain the relations between the domain specific terms by means of a graphic model (UML class diagram).
+
 \end{explanation}
 
+\pagebreak
 \subsection{Goal}
-\begin{explanation}
-Describe in detail what your project wants to achieve. Give clear answers how the shortcomings mentioned in the Initial Situation will be solved by the project.
-\end{explanation}
+Dahoam should give the customer a solid smart home hub integrated in a common mirror. The intelligent mirror will run 24/7 and is only active when a person is in front of it. If there is one, a movement sensor will wake up all services. \\
+Each user can have its own account, delete and personalize it. The general configuration can be edited by an administrator in Dahoam-Connect-App.
+
 \pagebreak
 
 \section{Functional Requirements}
-\begin{explanation}
-Functional requirements describe the features of a system which are expected by a user in order to solve a specific problem. The requirements are derived from the business processes and work flows which are supported by the system.
+In order to fulfill all requirements of a proper smart home hub the user can always get information about weather, calendar, current states of temperatures and lighting in different rooms. To show personalized data the user must be registered, which can be done through Dahoam-Connect-App. Within the app are possibilities to add calendars and email accounts. Besides of that the region for the weather forecast can be selected and other smart home devices can be added.
 
-The description of functional requirements is accomplished by means of use cases. A use case describes a concrete and self-contained process. The sum of all use cases describes the system behaviour. Describe use cases in plain text and support it by provide clear and illustrative use case diagrams.
-In case of a very data-oriented application provide a first version of a data model (business domain model). This model is the basis for the data base design in a later project stage. The data model is derived from the entities of the domain model.
-\end{explanation}
 
 \subsection{Overview}
-\begin{explanation}
-In this subsection you give an overview of all use cases. Starting with a UML use case diagram you list all use cases covered in your system and a short description of each of the use cases.
-\end{explanation}
+\begin{center}
+\includegraphics[scale=.7]{UseCase/UseCase.png}\\
+\end{center}
 
-\subsection{Use Case 1: $<$Name$>$}
-\begin{explanation}
-This subsection is copied for each use case you listed in the previous section.
-\end{explanation}
+\subsection{Use Case 1: $<$Delete User$>$}
 \subsubsection{General Description}
-\begin{explanation}
-Give a general description of where a tabular form might help:
-\end{explanation}
-
+In the user settings exists a "delete" button which deletes all related user data.
+\\
+\\
 \begin{tabular}{|p{.2\linewidth}|p{.65\linewidth}|}
 \hline 
-ID: & Identifier of the use case \\ \hline
-Goal: & The goal of the use case \\ \hline
-Precondition: & Under which condition is the user case triggered? \\ \hline
-Postcondition: & What conditions are true after the use case was successfully executed? \\ \hline
-Involved Users: &Role name: Description of users interacting with the system. “Users” can be other systems, too. \\ \hline
+ID: & Delete User/Admin \\ \hline
+Goal: & The user wants to be able to delete his own account. \\ \hline
+Precondition: & The use case will be triggered by pressing the "delete" button in the Dahoam-Connect-App. \\ \hline
+Postcondition: & The user is deleted and will not be recognized by the mirror anymore. Also the user will not be able to log in with the deleted account in the app. \\ \hline
+Involved Users: & Role name: user, admin  \\ \hline
 \end{tabular}
 
 \subsubsection{UI to call the use case}
-\begin{explanation}
-Give a sketch of the UI and describe the UX controls.
-\end{explanation}
+This is the design of the user settings, where a button will be added, to be able to delete the account logged in.
+
+\begin{center}
+\includegraphics[scale=.8]{UseCase/DeleteUserFirstStep.PNG}\\
+\end{center}
+\subsubsection{The Standard Use}
+The user clicks the button and his account will be deleted. The app will automatically log out the account and the mirror does not recognize the user again.
+ \includegraphics[angle=90, scale=.3]{UseCase/UIDELETEUSER2.png}\\
+
+\subsubsection{The Non-Standard Use}
+If the last admin for the mirror wants to delete himself, an error message must occur, because without an admin, the mirror can not change the smart home interfaces.\\\\
+ \includegraphics[angle=90, scale=.5]{UseCase/LetzterAdminWillAccountLoschen.jpeg}\\
+
+\subsection{Use Case 2: $<$First Configuration of the Mirror$>$}
+\subsubsection{General Description}
+\begin{tabular}{|p{.2\linewidth}|p{.65\linewidth}|}
+\hline 
+ID: & Fist Configuration of mirror \\ \hline
+Goal: & After the mirror has been installed, it must be configured, so that the mirror knows in which network it works.\\ \hline
+Precondition: & Directly after installing the mirror this usecase will be triggered. \\ \hline
+Postcondition: & The mirror knows in which network it has to operate. \\ \hline
+Involved Users: & Role name: admin \\ \hline
+\end{tabular}
+
+\subsubsection{UI to call the use case}
+\begin{center}
+\includegraphics[scale=.8]{UseCase/StandartWlanEinstellungen.PNG}\\
+\end{center}
 
 \subsubsection{The Standard Use}
+A WiFi is found and the correct password was submitted.\\\\
+\includegraphics[angle=90, scale=.8]{UseCase/VerbindungHergestelltMitInternet.jpeg}\\
+
+\subsubsection{The Non-Standard Use}
+If there is no WiFi to connect to, the mirror cannot fulfill its main purpose - being a smart home hub.
+Therefore a error message will be shown to the user. Also he will not be able to continue in the process configuring the mirror until it is connected to a WiFi.\\
+\includegraphics[angle=90, scale=.8]{UseCase/KeinWifiGefunden.jpeg}\\\\
+If a WiFi got selected, but the user entered a wrong password, an alert will appear to communicate this to the user.\\\\
+\includegraphics[angle=90, scale=.8]{UseCase/VerbindungFalschesPasswort.jpeg}\\
+
+
+\subsection{Use Case 3: $<$Install Smart Home Interfaces$>$}
+\subsubsection{General Description}
+Connecting Smart Home Devices to the mirror with the help of MQTT. \\s
+\\
+\begin{tabular}{|p{.2\linewidth}|p{.65\linewidth}|}
+\hline 
+ID: & Install Smart Home Interfaces\\ \hline
+Goal: & Connecting the mirror with smart home devices.\\ \hline
+Precondition: & Admin presses the button for installing the interfaces.\\ \hline
+Postcondition: & The mirror knows all different smart home devices which are installed. \\ \hline
+Involved Users: & Role name: admin  \\ \hline
+\end{tabular}
+
+\subsubsection{UI to call the use case}
+\begin{center}
+\includegraphics[scale=.8]{UseCase/StandartWlanEinstellungen.PNG}\\
+\end{center}
+
+\subsubsection{The Standard Use}
+First, a MQTT broker has to be set in the Dahoam-Connect-App. After pressing the connect button a small alert will be displayed. When connected, devices can be added. First a list of all existing devices will be displayed with an add button at the bottom. When a Publication is added it is needed to specify a name as well as the topic, QoS and retained are optional. To finish the procedure it is necessary to select a type, which defines what type of values will be sent. Subscription is more or less the same, but there has to be set the name and topic since data will be received.
 \begin{explanation}
-Describe the happy path.
-\begin{itemize}
-	\item UI
-	\item Description
-	\item Activity, Sequence, or State Diagram to visualize the workflow
-\end{itemize}
+\includegraphics[angle=90, scale=.5]{UseCase/InstallSmartHomeInterfaces.jpeg}\\
 \end{explanation}
 
 \subsubsection{The Non-Standard Use}
-\begin{explanation}
-Describe the corner cases, possible errors and how the system reacts on them
-\begin{itemize}
-	\item UI
-	\item Description
-	\item Activity, Sequence, or State Diagram to visualize the workflow
-\end{itemize}
-\end{explanation}
+When the user does not enter the right credentials for the broker, an alert occurs and warns him.
+
+
 \pagebreak
 
 \section{Non-Functional Requirements}
-\begin{explanation}
-Non-functional requirements describe all aspects of a system that cannot be mapped to a specific feature. Nevertheless these requirements are essential for the system itself. Non-functional requirements are, e.g., quality requirements, security requirements, or performance requirements.
-
-Non-functional requirements define basic features of a system which also have an impact on the architecture. They also influence the development costs and, therefore should be formulated in a measurable way.
-WRONG: The system shall be fast responding.
-CORRECT: The response time shall be within 500 ms.
-
-The following section has to be copied for each non-functional requirement.
-\end{explanation}
-
-\subsection{NFR 1: $<$Name$>$}
+\subsection{NFR 1: Enable full Dockerized Runtime Environment}
 \begin{tabular}{|p{.2\linewidth}|p{.65\linewidth}|}
 \hline 
-ID: & Identifier of the NFR \\ \hline
-Name: & The name of the NFR \\ \hline
-Type	: & Type as described below \\ \hline
-Descritpion: &  \\ \hline
+ID: & Runtime Environment \\ \hline
+Name: & Enable full Dockerized Runtime Environment \\ \hline
+Type	: & USE\\ \hline
+Description: & It is really complicated and takes a lot of time to install all required software and programming languages on the Raspberry Pi. Therefore, a Docker runtime environment should change this. Only by typing: docker-compose up, the mirror gets started and everything necessary will be installed.\\ \hline
 \end{tabular}
 
-The type of the NFR shall be taken from one of the following: The table below shall finally be deleted.
-
-\begin{tabular}{|p{.15\linewidth}|p{.25\linewidth}|p{.4\linewidth}|}
-\hline
-MAINT & Maintenance and portability requirement & Which maintenance or porting effort is expected in the future? Internationalization expected? Porting to different hardware platform?... \\ \hline
-SEC & Security requirement & Security requirements comprise confidentiality, data integrity, and availability. How much do we have to consider that data is not accessible to unauthorized persons? Is the correctness and/or consistency of data to be guaranteed? How severe are total system faults? \\ \hline
-LEGAL & Legal requirement & Are there any standards or legal constraints to be considered? \\ \hline
-USE & Usability Requirement & Usability covers all aspects to make the targeted user like to work with the software. \\ \hline
-EFFIC & Efficiency Requirement & Runtime and/or memory efficiency of the program. \\ \hline
+\subsection{NFR 2: Development Environment}
+\begin{tabular}{|p{.2\linewidth}|p{.65\linewidth}|}
+\hline 
+ID: & Development Environment \\ \hline
+Name: & Development Environment \\ \hline
+Type	: & MAINT\\ \hline
+Description: & Each docker-container can be tested isolated. Also the logging will be improved, so that the log level can be changed and the masterservice does not log unnecessary things as now.\\ \hline
 \end{tabular}
+
+\subsection{NFR 3: Alternative to QR-Code}
+\begin{tabular}{|p{.2\linewidth}|p{.65\linewidth}|}
+\hline 
+ID: & Alternative to QR-Code \\ \hline
+Name: & Alternative to QR-Code \\ \hline
+Type	: & USE\\ \hline
+Description: & Sometimes the QR-Code for registering a new user, does not work because the light outside is too bright and the phone therefore cannot scan the QR-Code. Thus, a alternative to the QR-Code is required.\\ \hline
+\end{tabular}
+
+\subsection{NFR 4: Admin Account}
+\begin{tabular}{|p{.2\linewidth}|p{.65\linewidth}|}
+\hline 
+ID: & Admin Account \\ \hline
+Name: & Admin Account \\ \hline
+Type	: & USE\\ \hline
+Description: &  Currently no users can be deleted and there is nobody who can manage the integration of other smart home devices. An admin can also view all registered users.\\ \hline
+\end{tabular}
+
+\subsection{NFR 5: User Administration}
+\begin{tabular}{|p{.2\linewidth}|p{.65\linewidth}|}
+\hline 
+ID: & User Administration \\ \hline
+Name: & User Administration \\ \hline
+Type	: & USE\\ \hline
+Description: & A user can delete his account and all related data to him. \\ \hline
+\end{tabular}
+
+\subsection{NFR 6: Demo Mode}
+\begin{tabular}{|p{.2\linewidth}|p{.65\linewidth}|}
+\hline 
+ID: & Demo Mode \\ \hline
+Name: & Demo Mode \\ \hline
+Type	: & EFFIC\\ \hline
+Description: & After a random amount of time some services stop working. To ensure a 24/7 runable system there is the need of a sleep mode which shuts services down when they are not needed. \\ \hline
+\end{tabular}
+
+\subsection{NFR 7: Dahoam-Flows}
+\begin{tabular}{|p{.2\linewidth}|p{.65\linewidth}|}
+\hline 
+ID: & Dahoam-Flows \\ \hline
+Name: & Dahoam-Flows \\ \hline
+Type	: & USE\\ \hline
+Description: & When speaking to the mirror it often understands wrong things. E.g.: "Schalte das Licht in Raum 2 und 3 ein" then it adds the two numbers and turns on the light in room 5. Furthermore a problem occurs when several registered users are in front of the mirror because it can not decide which of them should be logged in. When an unregistered user kicks off registration process and denies it, the whole registration process is blocked for the running session. While registration, a live camera feedback should help the user positioning himself in the right place.
+\\ \hline
+\end{tabular}
+
+
 \pagebreak
 
 \section{Quantity Structure}
-\begin{explanation}
-Describe the number of expected records in master data as well as business cases. This assessment is basis to make proper decisions concerning the form of data persistence (e.g., XML or data base) and data base product. Furthermore the quantity structure gives you a better idea about special requirements (e.g. the GUI) for your system because of hight quantity data.
-\end{explanation}
+
+Users will be saved with a username (unique), name and password, as well as a picture to identify them via the face recognition. Further more a user can add multiple email addresses and a calendar. Therefore a Database is the best option to store the master data.
 
 \pagebreak
 \section{System Architecture and Interfaces}
-\begin{explanation}
-To illustrate how your system is embedded in it’s environment list all interfaces to surrounding systems. Interfaces to users, supporting systems, logistics, peer-systems are to be listed and described.
-\end{explanation}
+Dahoam is embedded whether in a common home without any smart home interfaces or in a modern home with some smart home lights or sensors installed.\\
+The user is able to communicate with the mirror either with speech recognition or Dahoam-Connect-App. \\
+The mirror has a connection to a weather API and has an interface to get the emails of the user by POP3. It is also capable of addressing the calendar which is saved on the phone of the user. \\
+
 
 \pagebreak
 \section{Acceptance Criteria}
-\begin{explanation}
-The acceptance criteria define which criteria the system has to fulfill in order to be accepted. Describe, what has to be checked such that the system can be accepted. Give at least one acceptance test for each functional requirement described in this document. For each acceptance criterion one subsection has to be written.
-\end{explanation}
 
+\textbf{Delete User}\\
+If a user is deleted, all related data must be removed. If a user removes his account through Dahoam-Connect-App, a confirmation message appears and the user will be redirected to the login view. If he/she is meanwhile logged into the mirror, he/she should be logged out after the deletion process. \\
+\newline
+\textbf{First Configuration of the Mirror}\\
+The configuration must include:
+\begin{itemize}
+    \item Create an admin account for all further configurations
+    \item Connect to an existing network (on-/offline does not matter) in order to communicate with Dahoam-Connect-App
+    \begin{itemize}
+        \item Online: Enter location for the weather display
+    \end{itemize} 
+\end{itemize}
+\textbf{Install Smart Home Interfaces}\\
+For configuration of smart home devices, an own page in Dahoam-Connect-App is required. Following information is required:
+\begin{itemize}
+    \item MQTT-Broker IP and port
+    \item A username and password if needed
+    \item Publish
+    \begin{itemize}
+        \item Name
+        \item Topic
+        \item QoS and retained
+        \item Values
+    \end{itemize}
+    \item Subscription
+    \begin{itemize}
+        \item Name
+        \item Topic
+        \item QoS
+    \end{itemize}
+\end{itemize}
 \end{document}  
